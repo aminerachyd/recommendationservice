@@ -68,6 +68,8 @@ spec:
             {{- if .Values.connectsTo }}
             - name: SERVICE_URL
               value: {{ printf "%s:80" (index .Values.connectsTo 0) | quote }}
+            - name: PRODUCT_CATALOG_SERVICE_ADDR
+              value: {{ .Values.image.productcatalogserviceaddr | quote}}
             - name: PORT
               value: {{ .Values.image.port | quote}}
             - name: DISABLE_TRACING
