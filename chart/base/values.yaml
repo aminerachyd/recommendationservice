@@ -49,7 +49,7 @@ partOf: inventory
 connectsTo:
   - inventory-management-svc-solution
 
-runtime: nodejs
+runtime: python
 
 serviceMesh:
   sidecar: true
