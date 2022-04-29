@@ -22,6 +22,11 @@ WORKDIR /opt/app-root/src
 
 USER default
 
+RUN git clone https://github.com/GoogleCloudPlatform/cloud-debug-python.git && \
+    cd cloud-debug-python/src/ && \
+    ./build.sh && \
+    easy_install dist/google_python_cloud_debugger-*.egg
+
 # get packages
 COPY --chown=default:root requirements.txt .
 
