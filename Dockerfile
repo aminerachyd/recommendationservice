@@ -16,21 +16,16 @@ FROM registry.access.redhat.com/ubi8/python-36:1-170.1648121369 as builder
 
 USER root
 
-RUN yum install -y libstdc++-static wget make gcc-c++ && yum clean all
+RUN yum install -y sudo libstdc++-static wget make gcc-c++ && yum clean all
 
 WORKDIR /opt/app-root/src
 
 USER default
 
-RUN wget -q https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/BoringSSL/Jan2021/build_boringssl.sh && \
-    chmod +x build_boringssl.sh && \
-    ./build_boringssl.sh
-
 RUN git clone https://github.com/GoogleCloudPlatform/cloud-debug-python.git && \
     cd cloud-debug-python/src/ && \
     ./build.sh && \
     easy_install dist/google_python_cloud_debugger-*.egg
-
 
 # get packages
 COPY --chown=default:root requirements.txt .
