@@ -67,7 +67,7 @@ spec:
             - name: LOG_LEVEL
               value: {{ .Values.logLevel | quote }}
             - name: PRODUCT_CATALOG_SERVICE_ADDR
-              value: {{ .Values.image.productcatalogserviceaddr | quote}}
+              value: "{{ .Values.image.productcatalogservice.svcName }}.{{ .Values.namespaceToDeploy }}.svc.clusterset.local:{{ .Values.image.productcatalogservice.port }}"
             - name: PORT
               value: {{ .Values.image.port | quote}}
             - name: DISABLE_TRACING
