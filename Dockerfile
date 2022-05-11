@@ -16,7 +16,7 @@ FROM registry.access.redhat.com/ubi8/python-36:1-170.1648121369 as builder
 
 USER root
 
-RUN ARCH=$(uname -m) yum install -y https://rpmfind.net/linux/centos/8-stream/PowerTools/$ARCH/os/Packages/libstdc++-static-8.5.0-10.el8.$ARCH.rpm sudo wget make gcc-c++ && yum clean all
+RUN ARCH=$(uname -m) && yum install -y https://rpmfind.net/linux/centos/8-stream/PowerTools/$ARCH/os/Packages/libstdc++-static-8.5.0-10.el8.$ARCH.rpm sudo wget make gcc-c++ && yum clean all
 
 WORKDIR /opt/app-root/src
 
